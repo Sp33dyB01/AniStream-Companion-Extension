@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "AniStream Companion Extension",
+  "version": "0.9.0",
+  "description": "Adds an \"Open in AniStream\" button on AniList and MyAnimeList anime pages.",
+  "host_permissions": [
+    "http://127.0.0.1/*",
+    "http://localhost/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "tv_banner.png"
+      ],
+      "matches": [
+        "https://anilist.co/*",
+        "https://myanimelist.net/*"
+      ]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://anilist.co/*",
+        "https://myanimelist.net/anime*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
